@@ -36,7 +36,7 @@ download_tar() {
 download() {
     mkdir -p tars
 
-    download_tar $CTAGS_TAR $CTARS_URL
+    download_tar $CTAGS_TAR $CTAGS_URL
     download_tar $JANSSON_TAR $JANSSON_URL
     download_tar $PCRE2_TAR $PCRE2_URL
     download_tar $ICU4C_TAR $ICU4C_URL
