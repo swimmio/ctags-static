@@ -12,7 +12,6 @@ for ARCH in arm64 x86_64; do
     LIBS_DIR=$PWD/libs/darwin-$ARCH
     TARGET_DIR=$PWD/target/darwin-$ARCH
 
-
     rm -rf build/darwin-$ARCH
     mkdir -p build/darwin-$ARCH
     pushd build/darwin-$ARCH
