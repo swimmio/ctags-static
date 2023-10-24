@@ -12,6 +12,7 @@ for ARCH in arm64 x86_64; do
     LIBS_DIR=$PWD/libs/darwin-$ARCH
     TARGET_DIR=$PWD/target/darwin-$ARCH
 
+
     rm -rf build/darwin-$ARCH
     mkdir -p build/darwin-$ARCH
     pushd build/darwin-$ARCH
@@ -27,6 +28,7 @@ for ARCH in arm64 x86_64; do
     echo "[*] Building libyaml"
     tar xf ../../tars/$LIBYAML_TAR
     pushd $LIBYAML_NAME
+    autoreconf -f -i
     CC="clang -arch $ARCH" ./configure --host $ARCH-apple-darwin --prefix=$LIBS_DIR --disable-shared
     make
     make install
