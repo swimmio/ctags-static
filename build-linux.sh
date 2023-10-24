@@ -41,7 +41,7 @@ popd
 
 echo "[*] Building libyaml"
 tar xf ../../tars/$LIBYAML_TAR
-pushd $LIBXML2_NAME
+pushd $LIBYAML_TAR
 CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared
 make
 make install
