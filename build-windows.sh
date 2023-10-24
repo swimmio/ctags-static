@@ -19,7 +19,7 @@ echo "[*] Building ctags"
 tar xf ../../tars/$CTAGS_TAR
 pushd $CTAGS_NAME
 ./autogen.sh
-./configure --disable-external-sort --enable-static
+./configure --prefix=$TARGET_DIR --disable-external-sort --enable-static
 make
 make install
 popd

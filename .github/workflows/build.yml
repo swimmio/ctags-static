@@ -72,7 +72,8 @@ jobs:
             install: git make automake autoconf
             pacboy: toolchain:p python3-docutils:p jansson:p libxml2:p libyaml:p pcre2:p
 
-        - shell: msys2 {0}
+        - name: Build
+          shell: msys2 {0}
           run: ./build-windows.sh
 
         - uses: actions/upload-artifact@v3
