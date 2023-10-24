@@ -42,7 +42,7 @@ popd
 echo "[*] Building libxml2"
 tar xf ../../tars/$LIBXML2_TAR
 pushd $LIBXML2_NAME
-PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static --with-icu --without-python
+PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static --with-icu --without-python --without-zlib --without-lzma
 make
 make install
 popd
