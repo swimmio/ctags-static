@@ -24,6 +24,14 @@ for ARCH in arm64 x86_64; do
     gmake install
     popd
 
+    echo "[*] Building libyaml"
+    tar xf ../../tars/$LIBYAML_TAR
+    pushd $LIBXML2_NAME
+    CC="clang -arch $ARCH" ./configure --host $ARCH-apple-darwin --prefix=$LIBS_DIR --disable-shared
+    make
+    make install
+    popd
+
     echo "[*] Building PCRE2 ($ARCH)"
     tar xf ../../tars/$PCRE2_TAR
     pushd $PCRE2_NAME
