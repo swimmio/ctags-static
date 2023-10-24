@@ -8,11 +8,11 @@ export MAKE_FLAGS=-j8
 echo "[*] Downloading"
 download
 
-rm -rf build
 for ARCH in arm64 x86_64; do
     LIBS_DIR=$PWD/libs/darwin-$ARCH
     TARGET_DIR=$PWD/target/darwin-$ARCH
 
+    rm -rf build/darwin-$ARCH
     mkdir -p build/darwin-$ARCH
     pushd build/darwin-$ARCH
 
