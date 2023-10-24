@@ -3,6 +3,8 @@ set -e
 
 export MAKE_FLAGS=-j2
 
+. ./download.sh
+
 echo "[*] Downloading"
 download
 
