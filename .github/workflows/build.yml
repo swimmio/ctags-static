@@ -17,7 +17,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip3 install docutils
+          pip3 install make docutils
 
       - name: Build
         run: ./build-macos.sh
