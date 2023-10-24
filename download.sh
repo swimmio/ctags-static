@@ -41,5 +41,5 @@ download() {
     download_tar $PCRE2_TAR $PCRE2_URL
     download_tar $ICU4C_TAR $ICU4C_URL
     download_tar $LIBXML2_TAR $LIBXML2_URL
-    download_tar $LIBXML2_TAR $LIBXML2_URL
+    download_tar $LIBYAML_TAR $LIBYAML_URL
 }

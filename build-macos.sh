@@ -26,7 +26,7 @@ for ARCH in arm64 x86_64; do
 
     echo "[*] Building libyaml"
     tar xf ../../tars/$LIBYAML_TAR
-    pushd $LIBXML2_NAME
+    pushd $LIBYAML_NAME
     CC="clang -arch $ARCH" ./configure --host $ARCH-apple-darwin --prefix=$LIBS_DIR --disable-shared
     make
     make install
