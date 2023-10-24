@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-export MAKE_FLAGS=-j8
+export MAKE_FLAGS=-j2
 
 . ./download.sh
 
@@ -41,7 +41,7 @@ popd
 
 echo "[*] Building libyaml"
 tar xf ../../tars/$LIBYAML_TAR
-pushd $LIBYAML_TAR
+pushd $LIBYAML_NAME
 CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared
 make
 make install
