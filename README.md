@@ -1,6 +1,8 @@
 ## Dependencies
 ### macOS
 * Xcode Command Line Tools
+* autoconf
+* automake
 * docutils
 
 ### Linux
