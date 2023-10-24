@@ -31,18 +31,10 @@ make
 make install
 popd
 
-echo "[*] Building ICU4C"
-tar xf ../../tars/$ICU4C_TAR
-pushd $ICU4C_NAME/source
-CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static
-make
-make install
-popd
-
 echo "[*] Building libxml2"
 tar xf ../../tars/$LIBXML2_TAR
 pushd $LIBXML2_NAME
-PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static --with-icu --without-python --without-zlib --without-lzma
+PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static --without-python --without-zlib --without-lzma
 make
 make install
 popd
