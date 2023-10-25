@@ -1,5 +1,5 @@
 # ctags-static
-Static builds of [universal-ctags](https://github.com/universal-ctags/ctags)
+Static builds of [universal-ctags](https://github.com/universal-ctags/ctags).
 
 Note: Currently pinned to a specific version as we encountered some bug in the latest version, we will update to the latest once we solve those.
 
