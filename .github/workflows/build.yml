@@ -49,8 +49,8 @@ jobs:
         with:
           draft: true
           files: |
-            ctags-static-darwin-arm64.zip
-            ctags-static-darwin-x86_64.zip
+            target/ctags-static-darwin-arm64.zip
+            target/ctags-static-darwin-x86_64.zip
 
   build-linux:
     name: Build for Linux
@@ -89,7 +89,7 @@ jobs:
         with:
           draft: true
           files: |
-            ctags-static-linux-x86_64.zip
+            target/ctags-static-linux-x86_64.zip
 
   build-windows:
       name: Build for Windows
@@ -128,4 +128,4 @@ jobs:
           with:
             draft: true
             files: |
-              ctags-static-windows-x86_64.zip
+              target/ctags-static-windows-x86_64.zip
