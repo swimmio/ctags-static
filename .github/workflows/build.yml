@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches: [main]
+    tags: ['v[0-9].*']
   pull_request:
     branches: [main]
 
@@ -33,6 +34,24 @@ jobs:
           name: ctags-static-darwin-x86_64
           path: target/darwin-x86_64
 
+      - name: Archive
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          mv darwin-arm64 ctags-static-darwin-arm64
+          zip -r ctags-static-darwin-arm64.zip ctags-static-darwin-arm64
+          mv darwin-x86_64 ctags-static-darwin-x86_64
+          zip -r ctags-static-darwin-x86_64.zip ctags-static-darwin-x86_64
+        working-directory: target
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          draft: true
+          files: |
+            ctags-static-darwin-arm64.zip
+            ctags-static-darwin-x86_64.zip
+
   build-linux:
     name: Build for Linux
 
@@ -57,6 +76,21 @@ jobs:
           name: ctags-static-linux-x86_64
           path: target/linux-x86_64
 
+      - name: Archive
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          mv linux-x86_64 ctags-static-linux-x86_64
+          zip -r ctags-static-linux-x86_64.zip ctags-static-linux-x86_64
+        working-directory: target
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          draft: true
+          files: |
+            ctags-static-linux-x86_64.zip
+
   build-windows:
       name: Build for Windows
 
@@ -80,3 +114,18 @@ jobs:
           with:
             name: ctags-static-windows-x86_64
             path: target/windows-x86_64
+
+        - name: Archive
+          if: startsWith(github.ref, 'refs/tags/')
+          run: |
+            mv windows_x86_64 ctags-static-windows_x86_64
+            7z a ctags-static-windows-x86_64.zip ctags-static-windows_x86_64
+          working-directory: target
+
+        - name: Release
+          uses: softprops/action-gh-release@v1
+          if: startsWith(github.ref, 'refs/tags/')
+          with:
+            draft: true
+            files: |
+              ctags-static-windows-x86_64.zip
