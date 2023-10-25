@@ -118,8 +118,8 @@ jobs:
         - name: Archive
           if: startsWith(github.ref, 'refs/tags/')
           run: |
-            mv windows_x86_64 ctags-static-windows_x86_64
-            7z a ctags-static-windows-x86_64.zip ctags-static-windows_x86_64
+            mv windows-x86_64 ctags-static-windows-x86_64
+            7z a ctags-static-windows-x86_64.zip ctags-static-windows-x86_64
           working-directory: target
 
         - name: Release
