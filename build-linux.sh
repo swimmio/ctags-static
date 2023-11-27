@@ -18,7 +18,7 @@ pushd build/linux-x86_64
 echo "[*] Building jansson"
 tar xf ../../tars/$JANSSON_TAR
 pushd $JANSSON_NAME
-CC="musl-gcc -static"  ./configure --prefix=$LIBS_DIR --disable-shared
+CFLAGS=-static ./configure --host x86_64-linux-musl --prefix=$LIBS_DIR --disable-shared
 make
 make install
 popd
@@ -26,7 +26,7 @@ popd
 echo "[*] Building PCRE2"
 tar xf ../../tars/$PCRE2_TAR
 pushd $PCRE2_NAME
-CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-jit
+CFLAGS=-static ./configure --host x86_64-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-jit
 make
 make install
 popd
@@ -34,7 +34,7 @@ popd
 echo "[*] Building ICU4C"
 tar xf ../../tars/$ICU4C_TAR
 pushd $ICU4C_NAME/source
-CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static
+CFLAGS=-static ./configure --host x86_64-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-static
 make
 make install
 popd
@@ -42,7 +42,7 @@ popd
 echo "[*] Building libxml2"
 tar xf ../../tars/$LIBXML2_TAR
 pushd $LIBXML2_NAME
-PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static --without-python --without-zlib --without-lzma
+PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CFLAGS=-static ./configure --host x86_64-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-static --without-python --without-zlib --without-lzma
 make
 make install
 popd
@@ -50,7 +50,7 @@ popd
 echo "[*] Building libyaml"
 tar xf ../../tars/$LIBYAML_TAR
 pushd $LIBYAML_NAME
-CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared
+CFLAGS=-static ./configure --host x86_64-linux-musl --prefix=$LIBS_DIR --disable-shared
 make
 make install
 popd
@@ -59,7 +59,7 @@ echo "[*] Building ctags"
 tar xf ../../tars/$CTAGS_TAR
 pushd $CTAGS_NAME
 ./autogen.sh
-PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$TARGET_DIR
+PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CFLAGS=-static ./configure --host x86_64-linux-musl --prefix=$TARGET_DIR
 make
 make install
 popd
