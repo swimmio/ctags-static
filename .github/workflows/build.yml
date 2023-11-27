@@ -60,16 +60,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential \
-            musl-tools \
-            python3-docutils
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y \
+      #       build-essential \
+      #       musl-tools \
+      #       python3-docutils
 
       - name: Build
-        run: ./build-linux.sh
+        run: docker run --rm -i -v $PWD:/work -w /work muslcc/x86_64:x86_64-linux-musl ./build-linux.sh
 
       - uses: actions/upload-artifact@v3
         with:

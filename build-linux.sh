@@ -31,14 +31,13 @@ make
 make install
 popd
 
-# C++ so doesn't work with musl-gcc, needs full toolchain
-# echo "[*] Building ICU4C"
-# tar xf ../../tars/$ICU4C_TAR
-# pushd $ICU4C_NAME/source
-# CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static
-# make
-# make install
-# popd
+echo "[*] Building ICU4C"
+tar xf ../../tars/$ICU4C_TAR
+pushd $ICU4C_NAME/source
+CC="musl-gcc -static" ./configure --prefix=$LIBS_DIR --disable-shared --enable-static
+make
+make install
+popd
 
 echo "[*] Building libxml2"
 tar xf ../../tars/$LIBXML2_TAR
