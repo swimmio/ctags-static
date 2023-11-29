@@ -33,9 +33,9 @@ make install
 popd
 
 echo "[*] Building ICU4C (Build)"
-mkdir -p icu-host
-pushd icu-host
-tar xf ../../tars/$ICU4C_TAR
+mkdir -p icu-build
+pushd icu-build
+tar xf ../../../tars/$ICU4C_TAR
 pushd $ICU4C_NAME/source
 ./configure
 make
@@ -46,7 +46,7 @@ popd
 echo "[*] Building ICU4C (Host)"
 tar xf ../../tars/$ICU4C_TAR
 pushd $ICU4C_NAME/source
-LDFLAGS=-static ./configure --host x86_64-unknown-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-static --with-cross-build=$BUILD_DIR/icu-host/$ICU4C_NAME/source
+LDFLAGS=-static ./configure --host x86_64-unknown-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-static --with-cross-build=$BUILD_DIR/icu-build/$ICU4C_NAME/source
 make
 make install
 popd
