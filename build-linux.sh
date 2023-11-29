@@ -33,6 +33,7 @@ make install
 popd
 
 echo "[*] Building ICU4C (Build)"
+mkdir -p icu-host
 pushd icu-host
 tar xf ../../tars/$ICU4C_TAR
 pushd $ICU4C_NAME/source
