@@ -10,10 +10,11 @@ download
 
 LIBS_DIR=$PWD/libs/linux-x86_64
 TARGET_DIR=$PWD/target/linux-x86_64
+BUILD_DIR=$PWD/build/linux-x86_64
 
-rm -rf build/linux-x86_64
-mkdir -p build/linux-x86_64
-pushd build/linux-x86_64
+rm -rf $BUILD_DIR
+mkdir -p $BUILD_DIR
+pushd $BUILD_DIR
 
 echo "[*] Building jansson"
 tar xf ../../tars/$JANSSON_TAR
@@ -31,10 +32,20 @@ make
 make install
 popd
 
-echo "[*] Building ICU4C"
+echo "[*] Building ICU4C (Build)"
+pushd icu-host
 tar xf ../../tars/$ICU4C_TAR
 pushd $ICU4C_NAME/source
-LDFLAGS=-static ./configure --host x86_64-unknown-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-static
+./configure
+make
+make install
+popd
+popd
+
+echo "[*] Building ICU4C (Host)"
+tar xf ../../tars/$ICU4C_TAR
+pushd $ICU4C_NAME/source
+LDFLAGS=-static ./configure --host x86_64-unknown-linux-musl --prefix=$LIBS_DIR --disable-shared --enable-static --with-cross-build=$BUILD_DIR/icu-host/$ICU4C_NAME/source
 make
 make install
 popd
