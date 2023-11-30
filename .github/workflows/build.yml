@@ -69,7 +69,7 @@ jobs:
       #       python3-docutils
 
       - name: Build
-        run: docker run --rm -i -v $PWD:/work -w /work messense/rust-musl-cross:x86_64-musl sh -c "apt-get update && apt-get install pkg-config && ./build-linux.sh"
+        run: docker run --rm -i -v $PWD:/work -w /work messense/rust-musl-cross:x86_64-musl sh -c "apt-get update && apt-get install -y pkg-config && git ./build-linux.sh"
 
       - uses: actions/upload-artifact@v3
         with:
