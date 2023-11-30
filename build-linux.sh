@@ -39,7 +39,6 @@ tar xf ../../../tars/$ICU4C_TAR
 pushd $ICU4C_NAME/source
 ./configure
 make
-make install
 popd
 popd
 
