@@ -62,7 +62,7 @@ pushd $CTAGS_NAME
 ./autogen.sh
 PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="musl-gcc -static" ./configure --prefix=$TARGET_DIR
 make
-make install
+make install-strip
 popd
 
 popd

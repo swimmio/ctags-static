@@ -47,7 +47,7 @@ for ARCH in arm64 x86_64; do
     ./autogen.sh
     PKG_CONFIG_PATH=$LIBS_DIR/lib/pkgconfig CC="clang -arch $ARCH" ./configure --host $ARCH-apple-darwin --prefix=$TARGET_DIR
     gmake
-    gmake install
+    gmake install-strip
     popd
 
     popd
