@@ -3,8 +3,8 @@ strip_tar_ext() {
 }
 
 
-CTAGS_URL=https://github.com/universal-ctags/ctags/releases/download/v6.1.0/universal-ctags-6.1.0.tar.gz
-CTAGS_TAR=universal-ctags-6.1.0.tar.gz
+CTAGS_URL=https://github.com/universal-ctags/ctags/archive/refs/tags/p6.1.20241201.0.tar.gz
+CTAGS_TAR=p6.1.20241201.0.tar.gz
 CTAGS_NAME=$(strip_tar_ext $CTAGS_TAR)
 
 JANSSON_URL=https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
