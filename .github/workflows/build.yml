@@ -104,7 +104,7 @@ jobs:
             msystem: UCRT64
             update: true
             install: git make automake autoconf
-            pacboy: toolchain:p python3-docutils:p jansson:p libxml2:p libyaml:p pcre2:p
+            pacboy: toolchain:p p7zip:p python3-docutils:p jansson:p libxml2:p libyaml:p pcre2:p
 
         - name: Build
           shell: msys2 {0}
