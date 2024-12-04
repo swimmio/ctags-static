@@ -11,7 +11,7 @@ jobs:
   build-macos:
     name: Build for macOS
 
-    runs-on: macos-11
+    runs-on: macos-13
 
     steps:
       - uses: actions/checkout@v4
@@ -24,12 +24,12 @@ jobs:
       - name: Build
         run: ./build-macos.sh
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ctags-static-darwin-arm64
           path: target/darwin-arm64
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ctags-static-darwin-x86_64
           path: target/darwin-x86_64
@@ -71,7 +71,7 @@ jobs:
       - name: Build
         run: ./build-linux.sh
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ctags-static-linux-x86_64
           path: target/linux-x86_64
@@ -104,13 +104,13 @@ jobs:
             msystem: UCRT64
             update: true
             install: git make automake autoconf
-            pacboy: toolchain:p python3-docutils:p jansson:p libxml2:p libyaml:p pcre2:p
+            pacboy: "p7zip: toolchain:p python3-docutils:p jansson:p libxml2:p libyaml:p pcre2:p"
 
         - name: Build
           shell: msys2 {0}
           run: ./build-windows.sh
 
-        - uses: actions/upload-artifact@v3
+        - uses: actions/upload-artifact@v4
           with:
             name: ctags-static-windows-x86_64
             path: target/windows-x86_64
